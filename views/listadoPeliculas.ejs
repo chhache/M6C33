@@ -1,0 +1,15 @@
+<%- include('header') -%>
+
+    <h1>Listado de Películas</h1>
+    <ul>
+        <!-- Usamos un for porque no sabemos cuantas peliculas vamos a listar -->
+        <% for (let i=0; i < peliculas.length; i++ ) { %> 
+            <li>
+                <a href="/peliculas/<%= peliculas[i].id %>"</a>
+                <!--Imprimimos el titulo de la pelicula seleccionada -->
+                <%= pelicula[i].title %> 
+            </li>
+        <% } %>
+    </ul>
+
+<%- include('footer') -%>

@@ -1,0 +1,45 @@
+<%- include('header') -%>
+    <!-- Imprimir los datos de la pelicula recibida por ID -->
+    <h1><%= pelicula.title %></h1>
+    <ul>
+        <li>
+            <!-- Imprimir el campo length de la tabla -->
+            Duración: <%= pelicula.length %>
+        </li>
+        <li>
+            <!-- Imprimir el campo release_date de la tabla -->
+            Estreno: <%= pelicula.release_date %>
+        </li>
+        <li>
+            <!-- Imprimir el campo awards de la tabla -->
+            Premios: <%= pelicula.awards %>
+        </li>
+        <li>
+            <!-- Imprimir el campo rating de la tabla -->
+            Rating: <%= pelicula.rating %>
+        </li>
+        <li>
+            <!-- Imprimir el campo genero de la relación modelo.aliasRelacion.campo -->
+            Género: <%= pelicula.genero.name %>
+        </li>
+        <li>
+            <!-- Imprimir el campo actores de la relación modelo.aliasRelacion.campo -->
+            <!-- Como puede ser muchos usamos un ul -->
+            Actores:
+            <ul>
+                <% for (let i = 0; i < pelicula.actores.length, i++) { %>
+                <li>
+                    <%= pelicula.actores[i].first_name %> <%= pelicula.actores[i].last_name %>
+                </li>                     
+                <% } %>
+            </ul>
+            <a href="/peliculas/editar/<%= pelicula.id %>">
+                <button>Editar</button>
+            </a>
+            <form action="/peliculas/borrar/<%= pelicula.id %>" method="POST">
+                <button type="submit">Borrar</button>    
+            </form>
+        </li>
+    </ul>
+  
+<%- include('footer') -%>
